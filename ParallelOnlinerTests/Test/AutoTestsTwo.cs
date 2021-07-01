@@ -4,7 +4,7 @@ namespace ParallelOnlinerTests.Test
 {
     [TestFixture]
     [Parallelizable]
-    public class AutoTests : BaseTest
+    public class AutoTestsTwo : BaseTest
     {
         [TestCase("BMW", TestName = "Find BMW")]
         public void FindBMWTest(string model)

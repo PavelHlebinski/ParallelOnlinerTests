@@ -29,5 +29,21 @@ namespace ParallelOnlinerTests.Test
             ServicesPage.SelectService(serviceName, serviceType);
             ServicesPage.CheckServiceType(serviceType);
         }
+
+        [TestCase("Уборка", "Поддерживающая уборка", TestName = "Find Clining services1")]
+        public void FindRepairServicesTest1(string serviceName, string serviceType)
+        {
+            MainPage.OpenServices();
+            ServicesPage.SelectService(serviceName, serviceType);
+            ServicesPage.CheckServiceType(serviceType);
+        }
+
+        [TestCase("Уборка", "Поддерживающая уборка", TestName = "Find Clining services2")]
+        public void FindRepairServicesTest2(string serviceName, string serviceType)
+        {
+            MainPage.OpenServices();
+            ServicesPage.SelectService(serviceName, serviceType);
+            ServicesPage.CheckServiceType(serviceType);
+        }
     }
 }
