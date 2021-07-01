@@ -26,7 +26,7 @@ namespace ParallelOnlinerTests.Elements
             }
         }
 
-        public void WaitForElementIsPresent() => DriverFactory.GetWait(_driver, 10).Until(drv => drv.FindElements(_locator).Count > 0);
+        public void WaitForElementIsPresent() => new DriverFactory().GetWait(_driver, 10).Until(drv => drv.FindElements(_locator).Count > 0);
 
         public void Click() => InnerWebElement.Click();
 
@@ -35,5 +35,7 @@ namespace ParallelOnlinerTests.Elements
         public string GetText() => InnerWebElement.Text;
 
         public void ScrollToElement() => Actions.MoveToElement(InnerWebElement).Perform();
+
+        public void Switch() => _driver.SwitchTo().Frame(InnerWebElement);
     }
 }

@@ -8,20 +8,22 @@ namespace ParallelOnlinerTests.Factory
     public class DriverFactory
     {
         private IWebDriver _driver;
-        private static WebDriverWait _wait;
+        private WebDriverWait _wait;
 
         public IWebDriver GetDriver() => _driver ??= SetupDriver();
 
-        public IWebDriver SetupDriver() => new ChromeDriver();
+        public IWebDriver SetupDriver() => new ChromeDriver(GetOptions());
 
-        public static WebDriverWait GetWait(IWebDriver driver, int timeOutInSeconds) => _wait ??= SetupWait(driver, timeOutInSeconds);
+        public WebDriverWait GetWait(IWebDriver driver, int timeOutInSeconds) => _wait ??= SetupWait(driver, timeOutInSeconds);
 
         private static WebDriverWait SetupWait(IWebDriver driver, int timeOutInSeconds) => new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutInSeconds));
 
-        public static void QuitDriver(IWebDriver driver)
+        private static ChromeOptions GetOptions()
         {
-            driver.Quit();
-            _wait = null;
+            var options = new ChromeOptions();
+            options.AddArguments("start-maximized");
+            return options;
         }
+
     }
 }

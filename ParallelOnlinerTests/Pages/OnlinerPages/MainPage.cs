@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using ParallelOnlinerTests.Elements;
+using ParallelOnlinerTests.Pages.Modules;
 
 namespace ParallelOnlinerTests.Pages.OnlinerPages
 {
@@ -7,9 +7,10 @@ namespace ParallelOnlinerTests.Pages.OnlinerPages
     {
         public MainPage(IWebDriver driver) : base(driver) { }
 
-        private WebElement Logo =>
-            new WebElement(Driver, By.XPath("//*[@id=\"container\"]/div/div/header/div[3]/div/div[1]/a/img"));
+        public void OpenPage(string url) => OpenUrl(url);
 
-        public void LogoClick() => Logo.Click();
+        public void OpenAutoCatalog() => Header.OpenAutoCatalog();
+
+        public void OpenServices() => Header.OpenServices();
     }
 }

@@ -1,14 +1,16 @@
 ﻿using OpenQA.Selenium;
-using ParallelOnlinerTests.Factory;
+using ParallelOnlinerTests.Pages.Modules;
 using System;
 
 namespace ParallelOnlinerTests.Pages
 {
-    public class BasePage
+    public abstract class BasePage
     {
         protected IWebDriver Driver;
 
-        public BasePage(IWebDriver driver) => Driver = driver;
+        protected BasePage(IWebDriver driver) => Driver = driver;
+
+        protected Header Header => new Header(Driver);
 
         public void OpenUrl(string url)
         {
@@ -21,7 +23,5 @@ namespace ParallelOnlinerTests.Pages
                 Console.WriteLine("URL not found");
             }
         }
-
-        public void QuitDriver() => DriverFactory.QuitDriver(Driver);
     }
 }
